@@ -117,6 +117,7 @@ function getData(m_url) {
                 $('#table').bootstrapTable('load', seats);
                 for (let index = 0; index < seats.length; index++) {
                     if (seats[index]["status"] == "occupied") {
+                        console.log($(".m_btn".concat(seats[index]['seat_id'])));
                         $(".m_btn".concat(seats[index]['seat_id'])).css({
                             "background-color": "red",
                             "color": "rgb(194, 74, 80)",
