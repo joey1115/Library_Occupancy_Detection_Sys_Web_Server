@@ -1,1 +1,1 @@
-python3 webapp/app.py
+python3 app.py
