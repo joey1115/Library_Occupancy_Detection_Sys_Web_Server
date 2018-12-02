@@ -121,23 +121,40 @@ function getData(m_url) {
                             "background-color": "red",
                             "color": "rgb(194, 74, 80)",
                             "border": "2px solid rgb(194, 74, 80)"
-                        })
-                        // console.log(document.getElementsByClassName(".m_btn".concat(seats[index]['seat_id'])).style);
-                        // document.getElementsByClassName(".m_btn".concat(seats[index]['seat_id'])).style["background-color"] = "rgba(0, 0, 0, 1)";
+                        });
+                        $(".m_btn".concat(seats[index]['seat_id'])).hover(function () {
+                            $(this).css({
+                                "background-color": "rgba(245, 245, 245, 1)",
+                                "color": "rgba(125, 0, 0, 1)",
+                                "border": "2px solid rgb(128, 138, 131)"
+                            })
+                        });
                     } else if (seats[index]["status"] == "unoccupied") {
                         $(".m_btn".concat(seats[index]['seat_id'])).css({
                             "background-color": "green",
                             "color": "rgba(62, 155, 90)",
                             "border": "2px solid rgb(62, 155, 90)"
-                        })
-                        // document.getElementsByClassName(".m_btn".concat(seats[index]['seat_id'])).style["background-color"] = "rgba(254, 254, 254, 1)";
+                        });
+                        $(".m_btn".concat(seats[index]['seat_id'])).hover(function () {
+                            $(this).css({
+                                "background-color": "rgba(245, 245, 245, 1)",
+                                "color": "rgba(125, 0, 0, 1)",
+                                "border": "2px solid rgb(128, 138, 131)"
+                            })
+                        });
                     } else {
                         $(".m_btn".concat(seats[index]['seat_id'])).css({
                             "background-color": "grey",
                             "color": "rgba(128, 138, 131)",
                             "border": "2px solid rgb(128, 138, 131)"
-                        })
-                        // document.getElementsByClassName(".m_btn".concat(seats[index]['seat_id'])).style["background-color"] = "rgba(192, 192, 192, 1)"
+                        });
+                        $(".m_btn".concat(seats[index]['seat_id'])).hover(function () {
+                            $(this).css({
+                                "background-color": "rgba(245, 245, 245, 1)",
+                                "color": "rgba(125, 0, 0, 1)",
+                                "border": "2px solid rgb(128, 138, 131)"
+                            })
+                        });
                     }
                 }
             }
