@@ -1,0 +1,9 @@
+{
+    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\envs\\Raspberry Pi\\python.exe",
+    "python.linting.enabled": true,
+    "python.autoComplete.extraPaths": [
+        "${env:SPARK_HOME}\\python",
+        "${env:SPARK_HOME}\\python\\pyspark"
+    ],
+    "python.linting.pylintEnabled": true
+}

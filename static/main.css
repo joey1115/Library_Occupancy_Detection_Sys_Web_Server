@@ -1,0 +1,561 @@
+.m_container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+.m_container .m_img {   
+	position: absolute;
+    min-height: 3300px;
+    min-width: 2550px;
+    max-height: 3300px;
+    max-width: 2550px;
+    float: left;
+    margin: 3px;
+    padding: 3px;
+}
+
+.m_container .m_btn {
+    position: absolute;
+    height:15px;
+	width:24px;
+    color: black;
+    font-size: 6px;
+    padding: 0px 0px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+  	background-color: rgba(192, 192, 192, 1);
+    border-color: rgb(51, 211, 20);
+    border-radius: 4px;
+    color: black;
+    border: 2px solid rgb(128, 138, 131);
+}
+
+.m_container .m_btn:hover {
+    background-color: rgba(245, 245, 245, 1);
+    color: rgba(125, 0, 0, 1);
+}
+
+.m_container .m_btn1 {
+    top: 798px;
+    left: 1865px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn2 {
+    top: 798px;
+    left: 1900px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn3 {
+    top: 798px;
+    left: 1936px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn4 {
+    top: 798px;
+    left: 1972px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn5 {
+    top: 798px;
+    left: 2008px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn6 {
+    top: 798px;
+    left: 1972px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn7 {
+    top: 798px;
+    left: 2008px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn8 {
+    top: 798px;
+    left: 2044px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn9 {
+    top: 798px;
+    left: 2080px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn10 {
+    top: 798px;
+    left: 2116px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn11 {
+    top: 798px;
+    left: 2152px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn12 {
+    top: 798px;
+    left: 2188px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn13 {
+    top: 798px;
+    left: 2224px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn14 {
+    top: 798px;
+    left: 2260px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn15 {
+    top: 798px;
+    left: 2296px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn16 {
+    top: 874px;
+    left: 1795px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn17 {
+    top: 910px;
+    left: 1795px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn18 {
+    top: 946px;
+    left: 1795px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn19 {
+    top: 982px;
+    left: 1795px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn20 {
+    top: 1018px;
+    left: 1795px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn21 {
+    top: 1054px;
+    left: 1795px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn22 {
+    top: 1090px;
+    left: 1795px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn23 {
+    top: 1125px;
+    left: 1795px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn24 {
+    top: 1161px;
+    left: 1795px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn25 {
+    top: 1197px;
+    left: 1795px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn26 {
+    top: 1233px;
+    left: 1795px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn27 {
+    top: 1269px;
+    left: 1795px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn28 {
+    top: 1305px;
+    left: 1795px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn29 {
+    top: 882px;
+    left: 2378px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn30 {
+    top: 917px;
+    left: 2378px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn31 {
+    top: 953px;
+    left: 2378px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn32 {
+    top: 989px;
+    left: 2378px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn33 {
+    top: 1025px;
+    left: 2378px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn34 {
+    top: 1061px;
+    left: 2378px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn35 {
+    top: 1097px;
+    left: 2378px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn36 {
+    top: 1133px;
+    left: 2378px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn37 {
+    top: 1169px;
+    left: 2378px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn38 {
+    top: 1205px;
+    left: 2378px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn39 {
+    top: 1241px;
+    left: 2378px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn40 {
+    top: 1277px;
+    left: 2378px;
+    transform: rotate(45deg);
+}
+.m_container .m_btn41 {
+    top: 1313px;
+    left: 2378px;
+    transform: rotate(-45deg);
+}
+.m_container .m_btn42 {
+    top: 1235px;
+    left: 1883px;
+    transform: rotate(-90deg);
+}
+.m_container .m_btn43 {
+    top: 1216px;
+    left: 1863px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn44 {
+    top: 1258px;
+    left: 1862px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn45 {
+    top: 958px;
+    left: 1868px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn46 {
+    top: 915px;
+    left: 1869px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn47 {
+    top: 937px;
+    left: 1890px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn48 {
+    top: 864px;
+    left: 1920px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn49 {
+    top: 864px;
+    left: 1965px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn50 {
+    top: 884px;
+    left: 1942px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn51 {
+    top: 861px;
+    left: 2216px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn52 {
+    top: 861px;
+    left: 2259px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn53 {
+    top: 883px;
+    left: 2238px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn54 {
+    top: 1032px;
+    left: 1898px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn55 {
+    top: 1079px;
+    left: 1896px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn56 {
+    top: 1055px;
+    left: 1920px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn57 {
+    top: 1102px;
+    left: 1871px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn58 {
+    top: 1130px;
+    left: 1897px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn59 {
+    top: 1103px;
+    left: 1920px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn60 {
+    top: 1078px;
+    left: 1945px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn61 {
+    top: 1101px;
+    left: 1966px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn62 {
+    top: 1028px;
+    left: 1945px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn63 {
+    top: 1008px;
+    left: 1965px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn64 {
+    top: 1054px;
+    left: 1970px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn65 {
+    top: 1034px;
+    left: 1990px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn66 {
+    top: 1125px;
+    left: 1991px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn67 {
+    top: 1149px;
+    left: 1968px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn68 {
+    top: 1175px;
+    left: 1941px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn69 {
+    top: 891px;
+    left: 2040px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn70 {
+    top: 889px;
+    left: 2085px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn71 {
+    top: 912px;
+    left: 2061px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn72 {
+    top: 863px;
+    left: 2110px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn73 {
+    top: 937px;
+    left: 2036px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn74 {
+    top: 955px;
+    left: 2017px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn75 {
+    top: 981px;
+    left: 2043px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn76 {
+    top: 963px;
+    left: 2061px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn77 {
+    top: 938px;
+    left: 2087px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn78 {
+    top: 913px;
+    left: 2110px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn79 {
+    top: 958px;
+    left: 2108px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn80 {
+    top: 888px;
+    left: 2136px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn81 {
+    top: 983px;
+    left: 2133px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn82 {
+    top: 959px;
+    left: 2157px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn83 {
+    top: 935px;
+    left: 2182px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn84 {
+    top: 916px;
+    left: 2315px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn85 {
+    top: 939px;
+    left: 2293px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn86 {
+    top: 960px;
+    left: 2315px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn87 {
+    top: 987px;
+    left: 2235px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn88 {
+    top: 1012px;
+    left: 2209px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn89 {
+    top: 1037px;
+    left: 2185px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn90 {
+    top: 1062px;
+    left: 2210px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn91 {
+    top: 1083px;
+    left: 2231px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn92 {
+    top: 1060px;
+    left: 2255px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn93 {
+    top: 1034px;
+    left: 2279px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn94 {
+    top: 1060px;
+    left: 2305px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn95 {
+    top: 1085px;
+    left: 2281px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn96 {
+    top: 1109px;
+    left: 2257px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn97 {
+    top: 1130px;
+    left: 2278px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn98 {
+    top: 1109px;
+    left: 2205px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn99 {
+    top: 1126px;
+    left: 2189px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn100 {
+    top: 1152px;
+    left: 2212px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn101 {
+    top: 1133px;
+    left: 2231px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn102 {
+    top: 1203px;
+    left: 2315px;
+    transform: rotate(0deg);
+}
+.m_container .m_btn103 {
+    top: 1225px;
+    left: 2294px;
+    transform: rotate(90deg);
+}
+.m_container .m_btn104 {
+    top: 1247px;
+    left: 2315px;
+    transform: rotate(0deg);
+}
