@@ -232,6 +232,7 @@ def get_seats_info():
     m_cur.close()
     m_conn.commit()
     m_conn.close()
+    print(seats)
     seats = [{
         'id': seat[0],
         'location': seat[1],
@@ -241,10 +242,7 @@ def get_seats_info():
         'seat_id': seat[5]
     } for seat in seats]
     return jsonify({'seats': seats}), 200, {
-        'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': 0
+        'Access-Control-Allow-Origin': '*'
         }
 
 
@@ -266,10 +264,7 @@ def not_allowed(error):
 @app.route('/')
 def index():
     return render_template('index.html'), 200, {
-        'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': 0
+        'Access-Control-Allow-Origin': '*'
         }
 
 
@@ -277,20 +272,14 @@ def index():
 # @headers({'Access-Control-Allow-Origin': '*'})
 def table():
     return render_template('table.html'), 200, {
-        'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': 0
+        'Access-Control-Allow-Origin': '*'
         }
 
 
 @app.route('/test')
 def test():
     return render_template('test.html'), 200, {
-        'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': 0
+        'Access-Control-Allow-Origin': '*'
         }
 
 
