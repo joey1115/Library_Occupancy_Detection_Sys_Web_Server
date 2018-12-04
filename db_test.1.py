@@ -8,8 +8,8 @@ if __name__ == '__main__':
 
     conn = sqlite3.connect('DUDERSTADT_CENTER.db')
     c = conn.cursor()
-    c.execute('CREATE TABLE IF NOT EXISTS %s (ID TEXT PRIMARY KEY NOT NULL UNIQUE, STATUS TEXT NOT NULL, TEMP TEXT NOT NULL, BATTERY TEXT NOT NULL)' % (table_sensor))
-    c.execute('CREATE TABLE IF NOT EXISTS %s (ID TEXT PRIMARY KEY NOT NULL UNIQUE, SENSOR_ID TEXT NOT_NULL, LOCATION TEXT NOT NULL)' % (table_seat))
+    # c.execute('CREATE TABLE IF NOT EXISTS %s (ID TEXT PRIMARY KEY NOT NULL UNIQUE, STATUS TEXT NOT NULL, TEMP TEXT NOT NULL, BATTERY TEXT NOT NULL)' % (table_sensor))
+    # c.execute('CREATE TABLE IF NOT EXISTS %s (ID TEXT PRIMARY KEY NOT NULL UNIQUE, SENSOR_ID TEXT NOT_NULL, LOCATION TEXT NOT NULL)' % (table_seat))
     # c.execute('INSERT INTO %s (ID, STATUS, TEMP, BATTERY) VALUES (?, ?, ?, ?)' % (table_sensor,), ("1", "2", "3", "4"))
     # c.execute('INSERT INTO %s (ID, STATUS, TEMP, BATTERY) VALUES (?, ?, ?, ?)' % (table_sensor,), ("2", "2", "3", "4"))
     # c.execute('INSERT INTO %s (ID, SENSOR_ID, LOCATION) VALUES (?, ?, ?)' % (table_seat,), ("3", "FE:89:35:98", "3rd Floor"))
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     # c.execute('INSERT INTO %s (ID, SENSOR_ID, LOCATION) VALUES (?, ?, ?)' % (table_seat,), ("11", "FE:89:35:9A", "3rd Floor"))
     # c.execute('INSERT INTO %s (ID, SENSOR_ID, LOCATION) VALUES (?, ?, ?)' % (table_seat,), ("12", "E2:3A:A8:32", "3rd Floor"))
     # c.execute('INSERT INTO %s (ID, SENSOR_ID, LOCATION) VALUES (?, ?, ?)' % (table_seat,), ("13", "FE:89:35:9A", "3rd Floor"))
-    c.execute('INSERT INTO %s (ID, SENSOR_ID, LOCATION) VALUES (?, ?, ?)' % (table_seat,), ("8", "D1:E1:6C:5C", "3rd Floor"))
+    # c.execute('INSERT INTO %s (ID, SENSOR_ID, LOCATION) VALUES (?, ?, ?)' % (table_seat,), ("8", "D1:E1:6C:5C", "3rd Floor"))
     # c.execute('DELETE FROM %s WHERE ID =?' % (table_seat,), ("8",))
     c.execute('SELECT %s.LOCATION, %s.STATUS, %s.TEMP, %s.BATTERY FROM %s INNER JOIN %s ON %s.ID = %s.SENSOR_ID' % (
         table_seat,

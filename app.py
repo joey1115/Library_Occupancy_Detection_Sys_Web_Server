@@ -1,15 +1,18 @@
 from flask import Flask, render_template, request, jsonify, abort, make_response
 import sqlite3
 from threading import Timer
+import time
 
 table_name = 'DUDERSTADT_CENTER.db'
 table_sensor = "SENSOR"
 table_seat = "SEAT"
+table_count = "COUNT"
 
 conn = sqlite3.connect(table_name)
 c = conn.cursor()
 c.execute('CREATE TABLE IF NOT EXISTS %s (ID TEXT PRIMARY KEY NOT NULL UNIQUE, STATUS TEXT NOT NULL, TEMP TEXT NOT NULL, BATTERY TEXT NOT NULL)' % (table_sensor))
 c.execute('CREATE TABLE IF NOT EXISTS %s (ID TEXT PRIMARY KEY NOT NULL UNIQUE, SENSOR_ID TEXT NOT NULL, LOCATION TEXT NOT NULL)' % (table_seat))
+c.execute('CREATE TABLE IF NOT EXISTS %s (TIME INTEGER NOT NULL, NUM_OF_PEOPLE INTEGER NOT NULL)' % (table_count))
 c.close()
 conn.commit()
 conn.close()
@@ -39,7 +42,6 @@ def verify_seats(seats):
     if len(seats['seats']) == 0:
         abort(400)
     for seat in seats['seats']:
-        print(seat)
         verify_seat(seat)
         if seat['id'] in seat_id:
             abort(400)
@@ -232,7 +234,6 @@ def get_seats_info():
     m_cur.close()
     m_conn.commit()
     m_conn.close()
-    print(seats)
     seats = [{
         'id': seat[0],
         'location': seat[1],
@@ -241,9 +242,75 @@ def get_seats_info():
         'battery': seat[4],
         'seat_id': seat[5]
     } for seat in seats]
-    return jsonify({'seats': seats}), 200, {
-        'Access-Control-Allow-Origin': '*'
-        }
+    return jsonify({'seats': seats}), 200, {'Access-Control-Allow-Origin': '*'}
+
+@app.route('/seats_count', methods=['GET'])
+def get_seats_count():
+    m_conn = sqlite3.connect(table_name)
+    m_cur = m_conn.cursor()
+    local = time.localtime()
+    zero_sec = int(time.time()) - local.tm_hour * 3600 - local.tm_min * 60 - local.tm_sec
+    data = []
+    for hr in range(0, 24):
+        m_cur.execute(
+            """
+            SELECT 
+                avg("NUM") 
+            FROM 
+                (
+                    SELECT
+                        "NUM_OF_PEOPLE" as "NUM"
+                    FROM
+                        "COUNT"
+                    WHERE
+                        "TIME" >= ? AND "TIME" < ?
+                )
+            """,
+            (int(zero_sec - (24-hr)*3600), int(zero_sec - (23-hr)*3600))
+        )
+        res = m_cur.fetchone()[0]
+        if res is not None:
+            data.append(res)
+        else:
+            data.append(0)
+    m_cur.close()
+    m_conn.commit()
+    m_conn.close()
+    return jsonify({'counts': data}), 200, {'Access-Control-Allow-Origin': '*'}
+
+@app.route('/seats_count_today', methods=['GET'])
+def get_seats_count_today():
+    m_conn = sqlite3.connect(table_name)
+    m_cur = m_conn.cursor()
+    local = time.localtime()
+    zero_sec = int(time.time()) - local.tm_hour * 3600 - local.tm_min * 60 - local.tm_sec
+    data = []
+    for hr in range(0, local.tm_hour - 1):
+        m_cur.execute(
+            """
+            SELECT 
+                avg("NUM") 
+            FROM 
+                (
+                    SELECT
+                        "NUM_OF_PEOPLE" as "NUM"
+                    FROM
+                        "COUNT"
+                    WHERE
+                        "TIME" >= ? AND "TIME" < ?
+                )
+            """,
+            (int(zero_sec + hr*3600), int(zero_sec + (hr+1)*3600))
+        )
+        res = m_cur.fetchone()[0]
+        if res is not None:
+            data.append(res)
+        else:
+            data.append(0)
+    m_cur.close()
+    m_conn.commit()
+    m_conn.close()
+    return jsonify({'counts': data}), 200, {'Access-Control-Allow-Origin': '*'}
 
 
 @app.errorhandler(404)

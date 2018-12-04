@@ -1,4 +1,39 @@
+function count() {
+    $.ajax({
+        url: "http://shijingz.eecs.umich.edu:5000/seats_count",
+        dataType: "json",
+        method: "GET",
+        timeout: 1000,
+        statusCode: {
+            200: function (data, textStatus, jqXHR) {
+                for (let index = 0; index < data['counts'].length; index++) {
+                    myChart.data.datasets[0].data[index] = data['counts'][index];
+                }
+                myChart.update();
+            }
+        }
+    });
+}
+
+function count_today() {
+    $.ajax({
+        url: "http://shijingz.eecs.umich.edu:5000/seats_count_today",
+        dataType: "json",
+        method: "GET",
+        timeout: 1000,
+        statusCode: {
+            200: function (data, textStatus, jqXHR) {
+                for (let index = 0; index < data['counts'].length; index++) {
+                    myChart.data.datasets[1].data[index] = data['counts'][index];
+                }
+                myChart.update();
+            }
+        }
+    });
+}
+
 var ctx = document.getElementById("myChart");
+ 
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -30,36 +65,20 @@ var myChart = new Chart(ctx, {
         ],
         datasets: [{
             data: [
-                15339,
-                21345,
-                18483,
-                24003,
-                23489,
-                24092,
-                12034,
-                20000,
-                20000,
-                20000,
-                20000,
-                20000,
-                20000,
-                20000,
-                20000,
-                20000,
-                20000,
-                20000,
-                20000,
-                20000,
-                20000,
-                20000,
-                20000,
-                20000
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
             ],
             lineTension: 0,
             backgroundColor: 'transparent',
             borderColor: '#007bff',
             borderWidth: 4,
             pointBackgroundColor: '#007bff'
+        }, {
+            data: [],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: '#ff0000',
+            borderWidth: 4,
+            pointBackgroundColor: '#ff0000'
         }]
     },
     options: {
@@ -75,6 +94,9 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+count();
+count_today();
+
 $('#table').bootstrapTable({
     columns: [{
         field: 'id',
@@ -93,13 +115,7 @@ $('#table').bootstrapTable({
         title: 'Battery Level'
     }]
 });
-function m_fun(json) {
-    console.log(json)
-    //         // console.log(data.responseText)
-    //         // seats = JSON.parse(data)["seats"];
-    //         seats = data["seats"];
-    //         $('#table').bootstrapTable('load', seats);
-}
+
 function getData(m_url) {
     $.ajax({
         url: m_url,
@@ -117,7 +133,6 @@ function getData(m_url) {
                 $('#table').bootstrapTable('load', seats);
                 for (let index = 0; index < seats.length; index++) {
                     if (seats[index]["status"] == "occupied") {
-                        console.log($(".m_btn".concat(seats[index]['seat_id'])));
                         $(".m_btn".concat(seats[index]['seat_id'])).css({
                             "background-color": "red",
                             "color": "rgb(194, 74, 80)",
@@ -168,8 +183,21 @@ function getData(m_url) {
 }
 
 $(function () {
-    setInterval(function test() {
+    setInterval(function load_seats() {
         getData("http://shijingz.eecs.umich.edu:5000/seats_info");
     }, 1000)
 })
+
+$(function () {
+    setInterval(function load_count() {
+        count();
+    }, 20000)
+})
+
+$(function () {
+    setInterval(function load_count_today() {
+        count_today();
+    }, 10000)
+})
+
 $('#table').addClass("table table-striped table-sm");

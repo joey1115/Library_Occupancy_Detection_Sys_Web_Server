@@ -1,5 +1,9 @@
+.m_pad { 
+    padding-top: 70px; 
+}
+
 .m_container {
-    position: absolute;
+    position: inherit;
     height: 100%;
     width: 100%;
     overflow-y: scroll;
