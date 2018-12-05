@@ -1,9 +1,12 @@
-from flask import Flask, render_template, request, jsonify, abort, make_response
+import logging
 import sqlite3
-from threading import Timer
 import time
+from threading import Timer
 
-table_name = 'DUDERSTADT_CENTER.db'
+from flask import (Flask, abort, jsonify, make_response, render_template,
+                   request)
+
+table_name = '/home/pi/webapp/DUDERSTADT_CENTER.db'
 table_sensor = "SENSOR"
 table_seat = "SEAT"
 table_count = "COUNT"
@@ -82,7 +85,6 @@ def update_seats():
     ids = m_cur.fetchall()
 
     existing_id = [id[0] for id in ids]
-
     new_seats = [(seat['status'], seat['temp'], seat['battery'], seat['id']) for seat in request.json['seats']]
 
     m_cur.executemany('UPDATE %s SET STATUS=?, TEMP=?, BATTERY=? WHERE ID=?' % (table_sensor,), new_seats)
@@ -216,20 +218,20 @@ def get_seat(seat_id):
 
 @app.route('/seats_info', methods=['GET'])
 def get_seats_info():
-    m_conn = sqlite3.connect(table_name)
+    m_conn = sqlite3.connect('DUDERSTADT_CENTER.db')
     m_cur = m_conn.cursor()
-    m_cur.execute('SELECT %s.ID, %s.LOCATION, %s.STATUS, %s.TEMP, %s.BATTERY, %s.ID FROM %s INNER JOIN %s ON %s.ID = %s.SENSOR_ID' % (
-        table_sensor,
-        table_seat,
-        table_sensor,
-        table_sensor,
-        table_sensor,
-        table_seat,
-        table_seat,
-        table_sensor,
-        table_sensor,
-        table_seat
-    ))
+    m_cur.execute(
+        """
+        SELECT 
+            "SENSOR"."ID", "SEAT"."LOCATION", "SENSOR"."STATUS", "SENSOR"."TEMP", "SENSOR"."BATTERY", "SEAT"."ID"
+        FROM 
+            SEAT
+        INNER JOIN 
+            SENSOR 
+        ON 
+            SEAT.SENSOR_ID = SENSOR.ID
+        """
+    )
     seats = m_cur.fetchall()
     m_cur.close()
     m_conn.commit()
@@ -242,6 +244,7 @@ def get_seats_info():
         'battery': seat[4],
         'seat_id': seat[5]
     } for seat in seats]
+    app.logger.info('seats_info')
     return jsonify({'seats': seats}), 200, {'Access-Control-Allow-Origin': '*'}
 
 @app.route('/seats_count', methods=['GET'])
@@ -276,6 +279,7 @@ def get_seats_count():
     m_cur.close()
     m_conn.commit()
     m_conn.close()
+    app.logger.info('seats_count')
     return jsonify({'counts': data}), 200, {'Access-Control-Allow-Origin': '*'}
 
 @app.route('/seats_count_today', methods=['GET'])
@@ -285,7 +289,7 @@ def get_seats_count_today():
     local = time.localtime()
     zero_sec = int(time.time()) - local.tm_hour * 3600 - local.tm_min * 60 - local.tm_sec
     data = []
-    for hr in range(0, local.tm_hour - 1):
+    for hr in range(0, local.tm_hour):
         m_cur.execute(
             """
             SELECT 
@@ -310,6 +314,7 @@ def get_seats_count_today():
     m_cur.close()
     m_conn.commit()
     m_conn.close()
+    app.logger.info('seats_count_today')
     return jsonify({'counts': data}), 200, {'Access-Control-Allow-Origin': '*'}
 
 
@@ -351,4 +356,11 @@ def test():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.debug = True
+    handler = logging.FileHandler('/home/pi/webapp/flask.log', encoding='UTF-8')
+    handler.setLevel(logging.DEBUG)
+    logging_format = logging.Formatter(
+        '%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s')
+    handler.setFormatter(logging_format)
+    app.logger.addHandler(handler)
+    app.run(debug=True, host='0.0.0.0', port=80)

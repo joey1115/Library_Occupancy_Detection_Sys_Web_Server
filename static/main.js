@@ -1,13 +1,14 @@
 function count() {
     $.ajax({
-        url: "http://shijingz.eecs.umich.edu:5000/seats_count",
+        url: "http://shijingz.eecs.umich.edu/seats_count",
         dataType: "json",
         method: "GET",
         timeout: 1000,
         statusCode: {
             200: function (data, textStatus, jqXHR) {
+                myChart.data.datasets[1].data = [];
                 for (let index = 0; index < data['counts'].length; index++) {
-                    myChart.data.datasets[0].data[index] = data['counts'][index];
+                    myChart.data.datasets[1].data[index] = data['counts'][index];
                 }
                 myChart.update();
             }
@@ -17,14 +18,15 @@ function count() {
 
 function count_today() {
     $.ajax({
-        url: "http://shijingz.eecs.umich.edu:5000/seats_count_today",
+        url: "http://shijingz.eecs.umich.edu/seats_count_today",
         dataType: "json",
         method: "GET",
         timeout: 1000,
         statusCode: {
             200: function (data, textStatus, jqXHR) {
+                myChart.data.datasets[0].data = [];
                 for (let index = 0; index < data['counts'].length; index++) {
-                    myChart.data.datasets[1].data[index] = data['counts'][index];
+                    myChart.data.datasets[0].data[index] = data['counts'][index];
                 }
                 myChart.update();
             }
@@ -64,33 +66,34 @@ var myChart = new Chart(ctx, {
             "23:00"
         ],
         datasets: [{
-            data: [
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-            ],
-            lineTension: 0,
-            backgroundColor: 'transparent',
-            borderColor: '#007bff',
-            borderWidth: 4,
-            pointBackgroundColor: '#007bff'
-        }, {
+            label: 'Today',
             data: [],
             lineTension: 0,
             backgroundColor: 'transparent',
             borderColor: '#ff0000',
             borderWidth: 4,
             pointBackgroundColor: '#ff0000'
+        }, {
+            label: 'Yesterday',
+            data: [],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: '#007bff',
+            borderWidth: 4,
+            pointBackgroundColor: '#007bff'
         }]
     },
     options: {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: false
+                    beginAtZero: true
                 }
             }]
         },
         legend: {
-            display: false,
+            display: true,
+            // labels:
         }
     }
 });
@@ -101,6 +104,9 @@ $('#table').bootstrapTable({
     columns: [{
         field: 'id',
         title: 'ID'
+    }, {
+        field: 'seat_id',
+        title: 'Seat ID'
     }, {
         field: 'location',
         title: 'Location'
@@ -119,16 +125,11 @@ $('#table').bootstrapTable({
 function getData(m_url) {
     $.ajax({
         url: m_url,
-        // crossOrigin: true,
-        // proxy: "/static/proxy.php", //to overide default proxy
         dataType: "json",
         method: "GET",
         timeout: 1000,
-        // jsonpCallback: "m_fun"
         statusCode: {
             200: function (data, textStatus, jqXHR) {
-                // console.log(data.responseText)
-                // seats = JSON.parse(data)["seats"];
                 seats = data["seats"];
                 $('#table').bootstrapTable('load', seats);
                 for (let index = 0; index < seats.length; index++) {
@@ -184,7 +185,7 @@ function getData(m_url) {
 
 $(function () {
     setInterval(function load_seats() {
-        getData("http://shijingz.eecs.umich.edu:5000/seats_info");
+        getData("http://shijingz.eecs.umich.edu/seats_info");
     }, 1000)
 })
 

@@ -1,6 +1,6 @@
 import threading, sqlite3, time
 
-table_name = 'DUDERSTADT_CENTER.db'
+table_name = '/home/pi/webapp/DUDERSTADT_CENTER.db'
 table_count = "COUNT"
 
 def seat_count():
@@ -50,12 +50,12 @@ def db_count():
         """ , 
         (int(time.time()),)
     )
-    m_cur.execute(
-            """
-            DELETE FROM "COUNT" WHERE "TIME"<?
-            """,
-            (int(time.time() - 72*24*60*60),)
-    )
+    # m_cur.execute(
+    #         """
+    #         DELETE FROM "COUNT" WHERE "TIME"<?
+    #         """,
+    #         (int(time.time() - 72*60*60),)
+    # )
     m_cur.close()
     m_conn.commit()
     m_conn.close()
