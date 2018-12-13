@@ -2,11 +2,11 @@ import logging
 import sqlite3
 import time
 from threading import Timer
-
+from logging.handlers import RotatingFileHandler
 from flask import (Flask, abort, jsonify, make_response, render_template,
                    request)
 
-table_name = '/home/pi/webapp/DUDERSTADT_CENTER.db'
+table_name = '/home/ubuntu/webapp/DUDERSTADT_CENTER.db'
 table_sensor = "SENSOR"
 table_seat = "SEAT"
 table_count = "COUNT"
@@ -218,7 +218,7 @@ def get_seat(seat_id):
 
 @app.route('/seats_info', methods=['GET'])
 def get_seats_info():
-    m_conn = sqlite3.connect('DUDERSTADT_CENTER.db')
+    m_conn = sqlite3.connect(table_name)
     m_cur = m_conn.cursor()
     m_cur.execute(
         """
@@ -357,10 +357,9 @@ def test():
 
 if __name__ == '__main__':
     app.debug = True
-    handler = logging.FileHandler('/home/pi/webapp/flask.log', encoding='UTF-8')
-    handler.setLevel(logging.DEBUG)
-    logging_format = logging.Formatter(
-        '%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s')
-    handler.setFormatter(logging_format)
-    app.logger.addHandler(handler)
+    # handler = RotatingFileHandler(filename='/home/pi/webapp/flask.log', maxBytes=65536, backupCount=100, delay=False, encoding='UTF-8')
+    # handler.setLevel(logging.DEBUG)
+    # logging_format = logging.Formatter('%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s')
+    # handler.setFormatter(logging_format)
+    # app.logger.addHandler(handler)
     app.run(debug=True, host='0.0.0.0', port=80)

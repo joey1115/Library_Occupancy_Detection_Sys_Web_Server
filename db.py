@@ -1,6 +1,6 @@
 import threading, sqlite3, time
 
-table_name = '/home/pi/webapp/DUDERSTADT_CENTER.db'
+table_name = '/home/ubuntu/webapp/DUDERSTADT_CENTER.db'
 table_count = "COUNT"
 
 def seat_count():

@@ -1,6 +1,6 @@
 function count() {
     $.ajax({
-        url: "http://shijingz.eecs.umich.edu/seats_count",
+        url: "http://3.16.1.79/seats_count",
         dataType: "json",
         method: "GET",
         timeout: 1000,
@@ -18,7 +18,7 @@ function count() {
 
 function count_today() {
     $.ajax({
-        url: "http://shijingz.eecs.umich.edu/seats_count_today",
+        url: "http://3.16.1.79/seats_count_today",
         dataType: "json",
         method: "GET",
         timeout: 1000,
@@ -40,7 +40,6 @@ var myChart = new Chart(ctx, {
     type: 'line',
     data: {
         labels: [
-            "00:00",
             "01:00",
             "02:00",
             "03:00",
@@ -63,7 +62,8 @@ var myChart = new Chart(ctx, {
             "20:00",
             "21:00",
             "22:00",
-            "23:00"
+            "23:00",
+            "24:00"
         ],
         datasets: [{
             label: 'Today',
@@ -87,7 +87,7 @@ var myChart = new Chart(ctx, {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true
+                    beginAtZero: true,
                 }
             }]
         },
@@ -136,39 +136,33 @@ function getData(m_url) {
                     if (seats[index]["status"] == "occupied") {
                         $(".m_btn".concat(seats[index]['seat_id'])).css({
                             "background-color": "red",
-                            "color": "rgb(194, 74, 80)",
                             "border": "2px solid rgb(194, 74, 80)"
                         });
                         $(".m_btn".concat(seats[index]['seat_id'])).hover(function () {
                             $(this).css({
                                 "background-color": "rgba(245, 245, 245, 1)",
-                                "color": "rgba(125, 0, 0, 1)",
                                 "border": "2px solid rgb(128, 138, 131)"
                             })
                         });
                     } else if (seats[index]["status"] == "unoccupied") {
                         $(".m_btn".concat(seats[index]['seat_id'])).css({
                             "background-color": "green",
-                            "color": "rgba(62, 155, 90)",
                             "border": "2px solid rgb(62, 155, 90)"
                         });
                         $(".m_btn".concat(seats[index]['seat_id'])).hover(function () {
                             $(this).css({
                                 "background-color": "rgba(245, 245, 245, 1)",
-                                "color": "rgba(125, 0, 0, 1)",
                                 "border": "2px solid rgb(128, 138, 131)"
                             })
                         });
                     } else {
                         $(".m_btn".concat(seats[index]['seat_id'])).css({
                             "background-color": "grey",
-                            "color": "rgba(128, 138, 131)",
                             "border": "2px solid rgb(128, 138, 131)"
                         });
                         $(".m_btn".concat(seats[index]['seat_id'])).hover(function () {
                             $(this).css({
                                 "background-color": "rgba(245, 245, 245, 1)",
-                                "color": "rgba(125, 0, 0, 1)",
                                 "border": "2px solid rgb(128, 138, 131)"
                             })
                         });
@@ -185,7 +179,7 @@ function getData(m_url) {
 
 $(function () {
     setInterval(function load_seats() {
-        getData("http://shijingz.eecs.umich.edu/seats_info");
+        getData("http://3.16.1.79/seats_info");
     }, 1000)
 })
 

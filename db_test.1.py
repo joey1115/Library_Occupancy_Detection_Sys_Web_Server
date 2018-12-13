@@ -52,12 +52,20 @@ if __name__ == '__main__':
     #         "ID" = "104"
     #     """
     # )
+    # c.execute(
+    #     """
+    #     INSERT INTO
+    #         "SEAT" ("ID", "SENSOR_ID", "LOCATION")
+    #     VALUES
+    #         ("16", "DF:01:4B:63", "Testing")
+    #     """
+    # )
     c.execute(
         """
         SELECT
             *
         FROM
-            "COUNT"
+            "SEAT"
         """
     )
     count = c.fetchall()

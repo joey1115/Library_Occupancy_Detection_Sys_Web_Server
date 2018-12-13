@@ -115,9 +115,20 @@ CREATE TABLE IF NOT EXISTS
 
 -- SELECT * FROM "SEAT"
 
-UPDATE
-    "SEAT"
-SET
-    "ID" = "71"
-WHERE
-    "ID" = "104"
+-- UPDATE
+--     "SEAT"
+-- SET
+--     "ID" = "71"
+-- WHERE
+--     "ID" = "104"
+
+-- UPDATE
+--     "SEAT"
+-- SET
+--     "SENSOR_ID" = "E2:3A:A8:32"
+-- WHERE
+--     "ID" = "47"
+INSERT INTO
+    "SEAT" ("ID", "SENSOR_ID", "LOCATION")
+VALUES
+    ("16", "DF:01:4B:63", "Testing")
