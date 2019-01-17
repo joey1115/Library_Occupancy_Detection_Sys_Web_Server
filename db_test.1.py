@@ -69,7 +69,7 @@ if __name__ == '__main__':
         """
     )
     count = c.fetchall()
-    print(count)
+    # print(count)
     c.close()
     conn.commit()
     conn.close()
